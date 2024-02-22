@@ -14,5 +14,5 @@ struct ProcessEnvironmentBlockExcerpt {
 void* getImageBase() noexcept {
     // Access the PEB (Process Environment Block) inside the TEB (Thread Environment Block)
     auto pPEB = reinterpret_cast<ProcessEnvironmentBlockExcerpt*>(__readgsqword(0x60));
-	return pPEB->imageBaseAddress;
+    return pPEB->imageBaseAddress;
 }

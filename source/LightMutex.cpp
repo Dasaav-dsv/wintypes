@@ -6,7 +6,8 @@
 #include <mimalloc/include/mimalloc.h>
 
 namespace WinTypes {
-    LightMutex::LightMutex() : criticalSection(reinterpret_cast<CRITICAL_SECTION*>(mi_new(sizeof(CRITICAL_SECTION)))) {
+    LightMutex::LightMutex()
+        : criticalSection(reinterpret_cast<CRITICAL_SECTION*>(mi_new(sizeof(CRITICAL_SECTION)))) {
         InitializeCriticalSection(this->criticalSection);
     }
 

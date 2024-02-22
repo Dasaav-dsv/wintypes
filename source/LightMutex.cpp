@@ -3,16 +3,16 @@
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <Windows.h>
-#include <mimalloc/include/mimalloc.h>
 
 namespace WinTypes {
     LightMutex::LightMutex()
-        : criticalSection(reinterpret_cast<CRITICAL_SECTION*>(mi_new(sizeof(CRITICAL_SECTION)))) {
+        : criticalSection(new CRITICAL_SECTION) {
         InitializeCriticalSection(this->criticalSection);
     }
 
     LightMutex::~LightMutex() noexcept {
         DeleteCriticalSection(this->criticalSection);
+        delete this->criticalSection;
     }
 
     void LightMutex::lock() noexcept {

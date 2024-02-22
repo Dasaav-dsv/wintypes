@@ -46,7 +46,7 @@ namespace WinTypes {
             refModule(this->resmap->owner);
         }
 
-        ~NamedResouce() noexcept {
+        ~NamedResource() noexcept {
             // Keeping the module referenced until all resources are destroyed
             // This prevents a DLL from being unloaded while the resource is in use
             unrefModule(this->resmap->owner);

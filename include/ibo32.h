@@ -36,32 +36,32 @@ namespace WinTypes {
         // Pointer access
         T& operator *() noexcept { return *static_cast<pointer_t>(*this); }
         const T& operator *() const noexcept { return *static_cast<const_pointer_t>(*this); }
-		pointer_t operator->() noexcept { return static_cast<pointer_t>(*this); }
-		const_pointer_t operator->() const noexcept { return static_cast<const_pointer_t>(*this); }
+        pointer_t operator->() noexcept { return static_cast<pointer_t>(*this); }
+        const_pointer_t operator->() const noexcept { return static_cast<const_pointer_t>(*this); }
 
         // Comparison operators
-		bool operator == (const ibo32_t<T>& other) const noexcept { return this->value == other.value; }
-		bool operator != (const ibo32_t<T>& other) const noexcept { return this->value != other.value; }
-		bool operator < (const ibo32_t<T>& other) const noexcept { return this->value < other.value; }
-		bool operator > (const ibo32_t<T>& other) const noexcept { return this->value > other.value; }
-		bool operator <= (const ibo32_t<T>& other) const noexcept { return this->value <= other.value; }
-		bool operator >= (const ibo32_t<T>& other) const noexcept { return this->value >= other.value; }
+        bool operator == (const ibo32_t<T>& other) const noexcept { return this->value == other.value; }
+        bool operator != (const ibo32_t<T>& other) const noexcept { return this->value != other.value; }
+        bool operator < (const ibo32_t<T>& other) const noexcept { return this->value < other.value; }
+        bool operator > (const ibo32_t<T>& other) const noexcept { return this->value > other.value; }
+        bool operator <= (const ibo32_t<T>& other) const noexcept { return this->value <= other.value; }
+        bool operator >= (const ibo32_t<T>& other) const noexcept { return this->value >= other.value; }
 
         // Pointer from base + offset
-		pointer_t fromImageBase(void* base) noexcept {
-			if (this->value >= 0) {
-				return reinterpret_cast<pointer_t>((void*)(reinterpret_cast<uintptr_t>(base) + this->value));
-			}
-			else return nullptr;
-		}
+        pointer_t fromImageBase(void* base) noexcept {
+            if (this->value >= 0) {
+                return reinterpret_cast<pointer_t>((void*)(reinterpret_cast<uintptr_t>(base) + this->value));
+            }
+            else return nullptr;
+        }
 
         // Pointer from base + offset (const)
-		const_pointer_t fromImageBase(void* base) const noexcept {
-			if (this->value >= 0) {
-				return reinterpret_cast<const_pointer_t>((void*)(reinterpret_cast<uintptr_t>(base) + this->value));
-			}
-			else return nullptr;
-		}
+        const_pointer_t fromImageBase(void* base) const noexcept {
+            if (this->value >= 0) {
+                return reinterpret_cast<const_pointer_t>((void*)(reinterpret_cast<uintptr_t>(base) + this->value));
+            }
+            else return nullptr;
+        }
 
     private:
         template <typename L, typename R>

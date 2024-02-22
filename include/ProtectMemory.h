@@ -43,7 +43,7 @@ namespace WinTypes {
 
         // Movable
         ProtectMemory(ProtectMemory&& other) noexcept
-            : callback(other.callback), address(other.address), size(other.size), oldProtect(other.oldProtect) {}
+            : callback(other.callback), newProtect(other.newProtect), oldProtect(other.oldProtect), address(other.address), size(other.size) {}
     };
 }
 

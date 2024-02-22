@@ -28,7 +28,7 @@ namespace WinTypes {
         constexpr size_t resmapSize = sizeof(NamedResourceMap<void>);
         // Create a program-wide memory mapping
         HANDLE fileHandle = CreateFileMappingW(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, resmapSize, name);
-		auto mappedMemory = reinterpret_cast<NamedResourceMap<void>*>(
+        auto mappedMemory = reinterpret_cast<NamedResourceMap<void>*>(
             MapViewOfFile(fileHandle, FILE_MAP_ALL_ACCESS, 0, 0, resmapSize));
         return mappedMemory;
     }

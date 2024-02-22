@@ -14,4 +14,5 @@ target_sources("wintypes" PRIVATE
     "source/NamedResource.cpp"
     "source/ProtectMemory.cpp"
     "source/SharedMutex.cpp"
+    "source/ibo32.cpp"
 )

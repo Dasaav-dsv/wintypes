@@ -72,6 +72,10 @@ namespace WinTypes {
 
         int value;
     };
+
+    // 31-bit integer offset type used by many Windows internals
+    // Convertible to and from integers and pointers (void* version)
+    using ibo32 = ibo32_t<void>;
 }
 
 #endif /* WINTYPES_INCLUDE_IBO32_H */

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13.0)
 project(wintypes LANGUAGES C CXX)
 
 add_library("wintypes" STATIC)
-target_compile_features("wintypes" PUBLIC cxx_std_20)
+target_compile_features("wintypes" PRIVATE cxx_std_20)
 
 target_include_directories("wintypes" PUBLIC
     "include"

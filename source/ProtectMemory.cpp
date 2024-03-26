@@ -14,18 +14,18 @@ namespace WinTypes {
     }
 
     void ProtectMemory::lock() {
-        this->oldProtect = this->callback(this->address, this->size, this->newProtect);
+        this->oldProtect = this->callback(this->address, static_cast<DWORD>(this->size), this->newProtect);
     }
 
     void ProtectMemory::unlock() {
-        this->callback(this->address, this->size, this->oldProtect);
+        this->callback(this->address, static_cast<DWORD>(this->size), this->oldProtect);
     }
 
     bool ProtectMemory::try_lock() noexcept {
         try {
             this->lock();
         }
-        catch(std::exception& ex) {
+        catch(...) {
             return false;
         }
         return true;

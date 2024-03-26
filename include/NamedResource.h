@@ -32,7 +32,7 @@ namespace WinTypes {
         template <typename...Args>
         NamedResource(const wchar_t* name, Args&&...args) noexcept {
             // OS-backed file mapped memory is zero initialized
-            this->resmap = reinterpret_cast<resmap_t*>acquireResourceMapping(name);
+            this->resmap = reinterpret_cast<resmap_t*>(acquireResourceMapping(name));
             if (!this->resmap->owner) {
                 // We can use the fact the default SRW state is also zero
                 // Therefore it is always initialized after mapping memory

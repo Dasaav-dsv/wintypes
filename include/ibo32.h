@@ -23,7 +23,7 @@ namespace WinTypes {
         // Assignment operators (integer and pointer)
         void operator = (int rhs) noexcept { this->value = rhs; }
         void operator = (const_pointer_t rhs) noexcept {
-            this->value = this->ptrDiff(getImageBase(), address);
+            this->value = this->ptrDiff(getImageBase(), rhs);
         }
 
         // Explicit conversion operators to corresponding pointer types

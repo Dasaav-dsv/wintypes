@@ -51,6 +51,40 @@ namespace WinTypes {
             // This prevents a DLL from being unloaded while the resource is in use
             unrefModule(this->resmap->owner);
         }
+
+        // Lock resource in Exclusive/Write mode
+        void lock() noexcept {
+            this->resmap->srw.lock();
+        }
+        
+        // Unlock resource in Exclusive/Write mode
+        void unlock() noexcept {
+            this->resmap->srw.unlock();
+        }
+        
+        // Try lock resource in Exclusive/Write mode
+        bool try_lock() noexcept {
+            return this->resmap->srw.try_lock();
+        }
+
+        // Lock resource in Shared/Read mode
+        void lock_shared() noexcept {
+            this->resmap->srw.lock_shared();
+        }
+        
+        // Unlock resource in Shared/Read mode
+        void unlock_shared() noexcept {
+            this->resmap->srw.unlock_shared();
+        }
+        
+        // Try lock resource in Shared/Read mode
+        bool try_lock_shared() noexcept {
+            return this->resmap->srw.try_lock_shared();
+        }
+
+        // Deleted as per the Mutex requirement
+        NamedResource(const NamedResource&) = delete;
+        NamedResource(NamedResource&&) = delete;
     };
 }
 
